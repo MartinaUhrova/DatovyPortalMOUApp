@@ -98,8 +98,7 @@ namespace DatovyPortalApp.Models {
                     OrderBy(x => x.StatisticsId).
                     ToList();
 
-                List<int> SelectedIds = dataViewModel.FilteredValueOutput.Select(x => x.StatisticsId).ToList();
-                SelectedIds.ForEach(x => Console.WriteLine(x + " "));
+                List<int> SelectedIds = dataViewModel.FilteredValueOutput.Select(x => x.StatisticsId).ToList();              
                 dataViewModel.AvailableStatistics = db.Statistics.
                     Select(x => x.StatisticsCodeList).
                     Where(x => SelectedIds.Contains(x.Id)).

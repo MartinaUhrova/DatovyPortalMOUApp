@@ -49,9 +49,9 @@
             <div class="tab-pane fade show active" id="pageSelect1" role="tabpanel">
                 <h2>Souhrnné hodnocení dle vybraných faktorů</h2>
                 <p>
-                Ut arcu enim, dictum quis ultrices id, sagittis eget nulla sed nunc mi, congue ut ultricies ac, varius a eros donec porttitor, libero fermentum fringilla laoreet, eros arcu sodales ante, ut dictum risus lectus vel quam integer ultricies, nunc eget elementum euismod, orci enim vestibulum orci, nec suscipit urna odio et tellus suspendisse suscipit orci sit amet sem venenatis nec lobortis sem suscipit nullam nec. 
+                    Ut arcu enim, dictum quis ultrices id, sagittis eget nulla sed nunc mi, congue ut ultricies ac, varius a eros donec porttitor, libero fermentum fringilla laoreet, eros arcu sodales ante, ut dictum risus lectus vel quam integer ultricies, nunc eget elementum euismod, orci enim vestibulum orci, nec suscipit urna odio et tellus suspendisse suscipit orci sit amet sem venenatis nec lobortis sem suscipit nullam nec.
                 </p>
-                <form id="FormValuesOutput" class="p-2 rounded-1" asp-controller="Data" asp-action="ValuesOutput" asp-route-indicator ="@ViewBag.SelectedIndicator.Id">
+                <form id="FormValuesOutput" class="p-2 rounded-1" asp-controller="Data" asp-action="ValuesOutput" asp-route-indicator="@ViewBag.SelectedIndicator.Id">
                     <div class="row p-3">
                         <div class="col-auto mb-3">
                             @Html.LabelFor(model => model.DiagnosisId)
@@ -71,50 +71,48 @@
                         </div>
                     </div>
                     <div class="d-grid col-6 mx-auto my-3">
-                        <input type="submit" value="Zobrazit" class="" />                        
+                        <input type="submit" value="Zobrazit" class="" />
                     </div>
-                    
-
                 </form>
-                <div id="partialContainer" class="p-3 m-2 d-grid">
+                <div id="ValuesOutput" class="p-3 m-2 d-grid">
                 </div>
             </div>
             <div class="tab-pane fade" id="pageSelect2" role="tabpanel">
-
-            </div>
-        </div>
-
-
-
-        @*<form asp-action="Index">
-
-                @Html.DisplayFor(model => model.KrajBydliste)
-                @Html.RadioButtonFor(model => model.KrajBydliste, "Jihomoravský kraj")
-                @Html.RadioButtonFor(model => model.KrajBydliste, "Ostatní kraje")
-
-                @foreach (var item in ViewBag.AxisX) {
-                    <p>@item</p>
-                }
-
+                <h2>Srovnání indikátoru dle stratifikační proměnné</h2>
                 <p>
-                    <input type="submit" value="Calculate" />
+                    Scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue.
                 </p>
-            </form>
-            <div id="Graph1" style="width:600px;height:250px;"></div>*@
+                <form id="FormGraphOutput" class="p-2 rounded-1" asp-controller="Data" asp-action="GraphOutput" asp-route-indicator="@ViewBag.SelectedIndicator.Id">
+                    <div class="row p-3">
+                        <div class="col-auto mb-3">
+                            @Html.LabelFor(model => model.DiagnosisId)
+                            @Html.DropDownListFor(model => model.DiagnosisId, new SelectList(ViewBag.SelectedDiagnoses, "Id", "Name"))
+                        </div>
+                        <div class="col-auto mb-3">
+                            @Html.LabelFor(model => model.StadiumId)
+                            @Html.DropDownListFor(model => model.StadiumId, new SelectList(ViewBag.SelectedStadiums, "Id", "Name"))
+                        </div>
+                        <div class="col-auto mb-3">
+                            @Html.LabelFor(model => model.RegionId)
+                            @Html.DropDownListFor(model => model.RegionId, new SelectList(ViewBag.SelectedRegions, "Id", "Name"))
+                        </div>
+                        <div class="col-auto mb-3">
+                            @Html.LabelFor(model => model.PeriodId)
+                            @Html.DropDownListFor(model => model.PeriodId, new SelectList(ViewBag.SelectedPeriods, "Id", "Name"))
+                        </div>
+                    </div>
+                    <div class="d-grid col-6 mx-auto my-3">
+                        <input type="submit" value="Zobrazit" class="" />
+                    </div>
+                </form>
+                <div id="GraphOutput" class="p-3 m-2 d-grid">
+                </div>
+                
+            </div>
+        </div>        
+            
     </div>
 </div>
 
 
-@section Graphs {
-    <script type="text/javascript" language="javascript">
-            var x = @Html.Raw(Json.Serialize(@ViewBag.AxisX));
-            var y = @Html.Raw(Json.Serialize(@ViewBag.AxisY));
-            Graph1 = document.getElementById('Graph1');
-            Plotly.newPlot(Graph1, [{
-            x: x,
-            y: y,
-            }], {
-            margin: { t: 0 }
-            });
-    </script>
-}
+

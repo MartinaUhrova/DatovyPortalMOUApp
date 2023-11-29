@@ -35,17 +35,24 @@ namespace DatovyPortal.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult ValuesOutput(Statistics viewModel, int indicator) {
-            Console.WriteLine("Indikator:" + indicator);
             DataViewModel dataViewModel = controller.GetValueOutput(viewModel, indicator);
             
             return PartialView("_ValuesOutput", dataViewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult GraphOutput(Statistics viewModel, int indicator) {
+            
+            DataViewModel dataViewModel = controller.GetValueOutput(viewModel, indicator);
+            
+            return PartialView("_GraphOutput", dataViewModel);
+        }
+
+
         //[HttpPost]
         //public IActionResult ValuesOutput(Statistics statistics) {
-        //    int regionId = statistics.RegionId;            
-        //    Console.WriteLine("Byla vybrana moznost: "+ regionId);
-        //    //DbManipulatorModel dbManipulatorModel = new(_context);
+
         //    //var x = (from e in _context.DataModel
         //    //         where e.KrajBydliste == dataModel.KrajBydliste
         //    //         select e.Hodnota).ToList();
@@ -56,13 +63,5 @@ namespace DatovyPortal.Controllers {
         //    //ViewBag.AxisY = y;
         //    return RedirectToAction("Index", statistics);
         //}
-
-        //public IActionResult GetSelectedIndicator(int indicator = 1) {
-        //    DbManipulatorModel controller = new(context);
-        //    ViewBag.Stadiums = controller.GetStadiumCodeList();
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-
     }
 }
