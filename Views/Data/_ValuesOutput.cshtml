@@ -1,0 +1,44 @@
+﻿@model DataViewModel;
+
+
+<div class="card border-dark mb-3 fs-5 mx-auto shadow">
+    <div class="card-header">
+        <strong>@Model.SelectedIndicator.Name</strong>
+    </div>
+    <div class="card-body">
+        @for (int i = 0; i < Model.AvailableStatistics.Count; i++) {
+            int id = @Model.AvailableStatistics[i].Id;
+            double value = (double)(@Model.FilteredValueOutput[i].Value);
+            double? lowerLimit = (double?)(@Model.FilteredValueOutput[i].LowerLimit);
+            double? upperLimit = (double?)(@Model.FilteredValueOutput[i].UpperLimit);
+
+            string text = "";
+
+            switch (id) {
+                case 1:
+                case 2:
+                    text += value.ToString("N1") + " (" + lowerLimit?.ToString("N1") + "; " + upperLimit?.ToString("N1") + ")";
+                    break;
+                case 3:
+                    text += value.ToString("P1") + " (" + lowerLimit?.ToString("P1") + "; " + upperLimit?.ToString("P1") + ")";
+                    break;
+                case 4:
+                    text += value.ToString("N0");
+                    break;
+                case 5:
+                    text += value.ToString("P1");
+                    break;
+                case 6:
+                    text += value.ToString("N1");
+                    break;
+            }
+
+            <p>
+                @Model.AvailableStatistics[i].Name: <strong>@text</strong>
+            </p>
+        }
+    </div>
+</div>
+
+
+

@@ -1,0 +1,110 @@
+
+/* Import fontu */
+@font-face {
+    font-family: Matter;
+    src: url(../matter-font/Matter-Regular.otf);
+}
+
+@font-face {
+    font-family: Matter;
+    src: url(../matter-font/Matter-Bold.otf);
+    font-weight: bold;
+}
+
+/* Definice barev */
+:root {
+    --orange: #EB5E28;
+    --blue: #284B63;
+    --carribean: #3C6E71;
+    --lightCarribean: #3c6e717f;
+    --silver: #D9D9D9;
+    --grey: #353535;
+    --lightGrey: #838383;
+}
+
+
+body {
+    font-family: "Matter", sans-serif;
+    background-color: var(--silver);
+}
+
+.navbar {  
+    background-color: var(--blue);
+}
+
+    .navbar span {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bolder;
+    }
+
+    .navbar .menu-icon {
+        color: white;
+    }
+
+    .navbar a:hover, .navbar a:active, .navbar a:focus {
+        color: hsl(0, 0%, 30%);
+    }
+
+    .navbar a {
+        color: white;
+    }
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    padding: 30px;
+    min-width: 250px;
+    max-width: 350px;
+    color: white;
+    background-color: var(--grey) !important ;
+}
+
+.accordion-body {
+    background-color: var(--grey) !important;
+}
+.accordion-button {
+    background-color: var(--grey) !important;
+}
+    .accordion-button:after {
+        filter: grayscale(1) invert(1);
+    }
+
+.accordion-button:focus, .accordion-button:active {
+    box-shadow: none;
+}
+
+#sidebar-content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+
+}
+
+#pageSelect {
+    background-color: var(--lightGrey);
+}
+
+    #pageSelect .nav-link:hover {
+        background-color: var(--blue);        
+        border: 1px solid var(--blue);
+    }
+
+    #pageSelect .active {
+        font-weight: bold;
+    }
+.card-header {
+    background-color: var(--carribean);
+    color:white;
+}
+.card{
+    max-width: 40rem;
+}
+
+form{
+    background-color:var(--lightCarribean)
+}
