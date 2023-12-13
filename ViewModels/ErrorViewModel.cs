@@ -1,5 +1,7 @@
-namespace DatovyPortalApp.Models {
-    public class ErrorViewModel {
+namespace DatovyPortalApp.ViewModels
+{
+    public class ErrorViewModel
+    {
         public string? RequestId { get; set; }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);

@@ -1,13 +1,15 @@
-﻿namespace DatovyPortalApp.Models {
-    public class DataViewModel {
+﻿using DatovyPortalApp.Models;
+
+namespace DatovyPortalApp.ViewModels
+{
+    public class ValuesOutputViewModel
+    {
         public List<Statistics> FilteredValueOutput { get; set; }
         public List<StatisticsCodeList> AvailableStatistics { get; set; }
-
         public IndicatorCodeList SelectedIndicator { get; set; }
-
-        public List<double> AxisX { get; set; } = new List<double>() { 1, 2, 3, 4 };
-        public List<double> AxisY { get; set; } = new List<double>() { 1, 4, 2, 3 };
-        public DataViewModel() {
+        
+        public ValuesOutputViewModel()
+        {
             FilteredValueOutput = new();
             AvailableStatistics = new();
             SelectedIndicator = new();

@@ -12,27 +12,23 @@ namespace DatovyPortalApp.Models {
         [Required]
         public int IndicatorId { get; set; }
         [Required]
-        [Display(Name = "Vyberte diagnózu: ")]
-        public int DiagnosisId {  get; set; }
-        [Required]
-        [Display(Name = "Vyberte stadium: ")]
-        public int StadiumId {  get; set; }
-        [Required]
-        [Display(Name = "Vyberte bydliště: ")]
+        public int DiagnosisId { get; set; }
+        [Required]        
+        public int StadiumId { get; set; }
+        [Required]       
         public int RegionId { get; set; }
-        [Required]
-        [Display(Name = "Vyberte období: ")]
-        public int PeriodId {  get; set; }
+        [Required]      
+        public int PeriodId { get; set; }
         [Required]
         public int StatisticsId { get; set; }
         [AllowNull]
-        public int? SampleSize {  get; set; }
+        public int? SampleSize { get; set; }
         [AllowNull]
         public double Value { get; set; }
         [AllowNull]
-        public double? LowerLimit {  get; set; }
+        public double? LowerLimit { get; set; }
         [AllowNull]
-        public double? UpperLimit { get; set;}
+        public double? UpperLimit { get; set; }
 
         public SetCodeList SetCodeList { get; set; } = null!;
         public IndicatorCodeList IndicatorCodeList { get; set; } = null!;

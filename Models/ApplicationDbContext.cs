@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 namespace DatovyPortalApp.Models {
-    public class DataContext : DbContext {
-        public DataContext(DbContextOptions options) : base(options) {
+    public class ApplicationDbContext : DbContext {
+        public ApplicationDbContext(DbContextOptions options) : base(options) {
         }
         public DbSet<SetCodeList>? SetCodeList { get; set; }
         public DbSet<IndicatorCodeList>? IndicatorCodeList { get; set; }

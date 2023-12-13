@@ -1,4 +1,4 @@
-﻿@model Statistics
+﻿@model DatovyPortalApp.ViewModels.DataToOutputViewModel
 
 @{
     ViewData["Title"] = "Indikátory kvality péče"; }
@@ -33,41 +33,41 @@
         </ul>
     </nav>
     <div id="sidebar-content">
-        <div class="bg-white p-4 rounded mb-3">
+        <div class="bg-white p-4 rounded my-4">
             <h1 class="display-5">@ViewBag.SelectedIndicator.Name</h1>
             <p>@ViewBag.SelectedIndicator.Description</p>
         </div>
 
 
-        <nav>
+        <nav class="mt-4">
             <div class="nav nav-tabs nav-fill rounded-top" id="pageSelect" role="tablist">
                 <button class="nav-link active text-black" id="pageSelectHome1" data-bs-toggle="tab" data-bs-target="#pageSelect1" type="button" role="tab">Zjistit konkrétní hodnotu</button>
                 <button class="nav-link text-black" id="pageSelectHome2" data-bs-toggle="tab" data-bs-target="#pageSelect2" type="button" role="tab">Zobrazit srovnání podle stratifikační proměnné</button>
             </div>
         </nav>
-        <div class="tab-content bg-white rounded-bottom p-3" id="pageSelectContent">
+        <div class="tab-content bg-white rounded-bottom p-4" id="pageSelectContent">
             <div class="tab-pane fade show active" id="pageSelect1" role="tabpanel">
                 <h2>Souhrnné hodnocení dle vybraných faktorů</h2>
-                <p>
+                <p class="my-4">
                     Ut arcu enim, dictum quis ultrices id, sagittis eget nulla sed nunc mi, congue ut ultricies ac, varius a eros donec porttitor, libero fermentum fringilla laoreet, eros arcu sodales ante, ut dictum risus lectus vel quam integer ultricies, nunc eget elementum euismod, orci enim vestibulum orci, nec suscipit urna odio et tellus suspendisse suscipit orci sit amet sem venenatis nec lobortis sem suscipit nullam nec.
                 </p>
-                <form id="FormValuesOutput" class="p-2 rounded-1" asp-controller="Data" asp-action="ValuesOutput" asp-route-indicator="@ViewBag.SelectedIndicator.Id">
+                <form id="FormValuesOutput" class="p-2 rounded-1 my-4" asp-controller="Data" asp-action="ValuesOutput" asp-route-indicator="@ViewBag.SelectedIndicator.Id">
                     <div class="row p-3">
                         <div class="col-auto mb-3">
-                            @Html.LabelFor(model => model.DiagnosisId)
-                            @Html.DropDownListFor(model => model.DiagnosisId, new SelectList(ViewBag.SelectedDiagnoses, "Id", "Name"))
+                            @Html.LabelFor(model => model.DiagnosisIdValueOutput)
+                            @Html.DropDownListFor(model => model.DiagnosisIdValueOutput, new SelectList(ViewBag.SelectedDiagnoses, "Id", "Name"))
                         </div>
                         <div class="col-auto mb-3">
-                            @Html.LabelFor(model => model.StadiumId)
-                            @Html.DropDownListFor(model => model.StadiumId, new SelectList(ViewBag.SelectedStadiums, "Id", "Name"))
+                            @Html.LabelFor(model => model.StadiumIdValueOutput)
+                            @Html.DropDownListFor(model => model.StadiumIdValueOutput, new SelectList(ViewBag.SelectedStadiums, "Id", "Name"))
                         </div>
                         <div class="col-auto mb-3">
-                            @Html.LabelFor(model => model.RegionId)
-                            @Html.DropDownListFor(model => model.RegionId, new SelectList(ViewBag.SelectedRegions, "Id", "Name"))
+                            @Html.LabelFor(model => model.RegionIdValueOutput)
+                            @Html.DropDownListFor(model => model.RegionIdValueOutput, new SelectList(ViewBag.SelectedRegions, "Id", "Name"))
                         </div>
                         <div class="col-auto mb-3">
-                            @Html.LabelFor(model => model.PeriodId)
-                            @Html.DropDownListFor(model => model.PeriodId, new SelectList(ViewBag.SelectedPeriods, "Id", "Name"))
+                            @Html.LabelFor(model => model.PeriodIdValueOutput)
+                            @Html.DropDownListFor(model => model.PeriodIdValueOutput, new SelectList(ViewBag.SelectedPeriods, "Id", "Name"))
                         </div>
                     </div>
                     <div class="d-grid col-6 mx-auto my-3">
@@ -83,23 +83,75 @@
                     Scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue.
                 </p>
                 <form id="FormGraphOutput" class="p-2 rounded-1" asp-controller="Data" asp-action="GraphOutput" asp-route-indicator="@ViewBag.SelectedIndicator.Id">
-                    <div class="row p-3">
+                    <div class="row px-3 py-2">
+                        <div class="col-auto">
+                            <h4>Stratifikace</h4>
+                            <input type="radio" asp-for="StratificationGraphOutput" value=1 class="btn-check test" id="GraphOutput_RB_1_1" checked/>
+                            <label class="btn btn-light m-1" for="GraphOutput_RB_1_1">Diagnóza</label>
+                            <input type="radio" asp-for="StratificationGraphOutput" value=2 class="btn-check test" id="GraphOutput_RB_1_2" />
+                            <label class="btn btn-light m-1" for="GraphOutput_RB_1_2">Stadium</label>
+                            <input type="radio" asp-for="StratificationGraphOutput" value=3 class="btn-check test" id="GraphOutput_RB_1_3" />
+                            <label class="btn btn-light m-1" for="GraphOutput_RB_1_3">Bydliště</label>
+                            <input type="radio" asp-for="StratificationGraphOutput" value=4 class="btn-check test" id="GraphOutput_RB_1_4" />
+                            <label class="btn btn-light m-1" for="GraphOutput_RB_1_4">Období</label>
+                        </div>
+                        <div class="col-auto">
+                            <h4>Statistika</h4>
+                            @{int i = 1;
+                                bool check = true;
+                                foreach (var statistics in ViewBag.SelectedStatistics) {
+                                    <input type="radio" asp-for="StatisticsIdGraphOutput" value=@statistics.Id class="btn-check" id="GraphOutput_RB_2_@i" checked=@check />
+                                    <label class="btn btn-light m-1" for="GraphOutput_RB_2_@i">@statistics.Name</label>
+                                    i++;
+                                    check = false;
+                                }
+                            }
+                        </div>
+
+                    </div>
+                    <div class="row px-3 pt-2">
+                        <h4>Základní filtr</h4>
                         <div class="col-auto mb-3">
-                            @Html.LabelFor(model => model.DiagnosisId)
-                            @Html.DropDownListFor(model => model.DiagnosisId, new SelectList(ViewBag.SelectedDiagnoses, "Id", "Name"))
+                            <div class="form-floating">
+                                <select class="form-select" disabled asp-for="DiagnosisIdGraphOutput" id=GraphOutput_Select_1>
+                                    @foreach (var diagnosis in ViewBag.SelectedDiagnoses) {
+                                        <option value=@diagnosis.Id>@diagnosis.Name</option>
+                                    }
+                                </select>
+                                <label>Diagnóza</label>
+                            </div>
                         </div>
                         <div class="col-auto mb-3">
-                            @Html.LabelFor(model => model.StadiumId)
-                            @Html.DropDownListFor(model => model.StadiumId, new SelectList(ViewBag.SelectedStadiums, "Id", "Name"))
+                            <div class="form-floating">
+                                <select class="form-select" asp-for="StadiumIdGraphOutput" id=GraphOutput_Select_2>
+                                    @foreach (var stadium in ViewBag.SelectedStadiums) {
+                                        <option value=@stadium.Id>@stadium.Name</option>
+                                    }
+                                </select>
+                                <label>Stadium</label>
+                            </div>
                         </div>
                         <div class="col-auto mb-3">
-                            @Html.LabelFor(model => model.RegionId)
-                            @Html.DropDownListFor(model => model.RegionId, new SelectList(ViewBag.SelectedRegions, "Id", "Name"))
+                            <div class="form-floating">
+                                <select class="form-select" asp-for="RegionIdGraphOutput" id=GraphOutput_Select_3>
+                                    @foreach (var region in ViewBag.SelectedRegions) {
+                                        <option value=@region.Id>@region.Name</option>
+                                    }
+                                </select>
+                                <label>Bydliště</label>
+                            </div>
                         </div>
                         <div class="col-auto mb-3">
-                            @Html.LabelFor(model => model.PeriodId)
-                            @Html.DropDownListFor(model => model.PeriodId, new SelectList(ViewBag.SelectedPeriods, "Id", "Name"))
+                            <div class="form-floating">
+                                <select class="form-select" asp-for="PeriodIdGraphOutput" id=GraphOutput_Select_4>
+                                    @foreach (var period in ViewBag.SelectedPeriods) {
+                                        <option value=@period.Id>@period.Name</option>
+                                    }
+                                </select>
+                                <label>Období</label>
+                            </div>
                         </div>
+
                     </div>
                     <div class="d-grid col-6 mx-auto my-3">
                         <input type="submit" value="Zobrazit" class="" />
@@ -107,12 +159,9 @@
                 </form>
                 <div id="GraphOutput" class="p-3 m-2 d-grid">
                 </div>
-                
+
             </div>
-        </div>        
-            
+        </div>
+
     </div>
 </div>
-
-
-
