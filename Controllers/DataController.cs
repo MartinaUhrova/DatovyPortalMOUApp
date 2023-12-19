@@ -50,9 +50,8 @@ namespace DatovyPortal.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> GraphOutput(DataToOutputViewModel inputViewModel, int indicator) {
-            await Console.Out.WriteLineAsync(inputViewModel.DiagnosisIdGraphOutput.ToString());
             GraphOutputViewModel graphViewModel = await service.GetGraphOutputAsync(inputViewModel, indicator);
-
+            
             return PartialView("_GraphOutput", graphViewModel);
         }
     }

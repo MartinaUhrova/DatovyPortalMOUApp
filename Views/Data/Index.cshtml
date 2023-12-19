@@ -10,11 +10,11 @@
             @foreach (var item in ViewBag.Sets) {
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="sidebar-heading-@item.Id">
-                        <button class="accordion-button bg-dark text-white fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-collapse-@item.Id">
+                        <button class="accordion-button collapsed bg-dark fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-collapse-@item.Id">
                             @item.Id. @item.Name
                         </button>
                     </h2>
-                    <div id="sidebar-collapse-@item.Id" class="accordion-collapse collapse bg-dark text-white" data-bs-parent="#sidebar-accordion">
+                    <div id="sidebar-collapse-@item.Id" class="accordion-collapse collapse bg-dark" data-bs-parent="#sidebar-accordion">
                         <div class="accordion-body">
                             <ul>
                                 @foreach (var row in ViewBag.Indicators) {
@@ -53,25 +53,50 @@
                 </p>
                 <form id="FormValuesOutput" class="p-2 rounded-1 my-4" asp-controller="Data" asp-action="ValuesOutput" asp-route-indicator="@ViewBag.SelectedIndicator.Id">
                     <div class="row p-3">
-                        <div class="col-auto mb-3">
-                            @Html.LabelFor(model => model.DiagnosisIdValueOutput)
-                            @Html.DropDownListFor(model => model.DiagnosisIdValueOutput, new SelectList(ViewBag.SelectedDiagnoses, "Id", "Name"))
+                        <div class="col-auto mb-2">
+                            <div class="form-floating">
+                                <select class="form-select" asp-for="DiagnosisIdValueOutput">
+                                    @foreach (var diagnosis in ViewBag.SelectedDiagnoses) {
+                                        <option value=@diagnosis.Id>@diagnosis.Name</option>
+                                    }
+                                </select>
+                                @Html.LabelFor(model => model.DiagnosisIdValueOutput)
+                            </div>
                         </div>
-                        <div class="col-auto mb-3">
-                            @Html.LabelFor(model => model.StadiumIdValueOutput)
-                            @Html.DropDownListFor(model => model.StadiumIdValueOutput, new SelectList(ViewBag.SelectedStadiums, "Id", "Name"))
+                        <div class="col-auto mb-2">
+                            <div class="form-floating">
+                                <select class="form-select" asp-for="StadiumIdValueOutput">
+                                    @foreach (var stadium in ViewBag.SelectedStadiums) {
+                                        <option value=@stadium.Id>@stadium.Name</option>
+                                    }
+                                </select>
+                                @Html.LabelFor(model => model.StadiumIdValueOutput)
+                            </div>
                         </div>
-                        <div class="col-auto mb-3">
-                            @Html.LabelFor(model => model.RegionIdValueOutput)
-                            @Html.DropDownListFor(model => model.RegionIdValueOutput, new SelectList(ViewBag.SelectedRegions, "Id", "Name"))
+                        <div class="col-auto mb-2">
+                            <div class="form-floating">
+                                <select class="form-select" asp-for="RegionIdValueOutput">
+                                    @foreach (var region in ViewBag.SelectedRegions) {
+                                        <option value=@region.Id>@region.Name</option>
+                                    }
+                                </select>
+                                @Html.LabelFor(model => model.RegionIdValueOutput)
+                            </div>
                         </div>
-                        <div class="col-auto mb-3">
-                            @Html.LabelFor(model => model.PeriodIdValueOutput)
-                            @Html.DropDownListFor(model => model.PeriodIdValueOutput, new SelectList(ViewBag.SelectedPeriods, "Id", "Name"))
+                        <div class="col-auto mb-2">
+                            <div class="form-floating">
+                                <select class="form-select" asp-for="PeriodIdValueOutput">
+                                    @foreach (var period in ViewBag.SelectedPeriods) {
+                                        <option value=@period.Id>@period.Name</option>
+                                    }
+                                </select>
+                                @Html.LabelFor(model => model.PeriodIdValueOutput)
+                            </div>
                         </div>
                     </div>
-                    <div class="d-grid col-6 mx-auto my-3">
-                        <input type="submit" value="Zobrazit" class="" />
+                    <div class="d-grid col-6 mx-auto my-2">
+                        <button class="btn btn-secondary" type="submit">Zobrazit</button>
+
                     </div>
                 </form>
                 <div id="ValuesOutput" class="p-3 m-2 d-grid">
@@ -86,22 +111,22 @@
                     <div class="row px-3 py-2">
                         <div class="col-auto">
                             <h4>Stratifikace</h4>
-                            <input type="radio" asp-for="StratificationGraphOutput" value=1 class="btn-check test" id="GraphOutput_RB_1_1" checked/>
-                            <label class="btn btn-light m-1" for="GraphOutput_RB_1_1">Diagnóza</label>
-                            <input type="radio" asp-for="StratificationGraphOutput" value=2 class="btn-check test" id="GraphOutput_RB_1_2" />
-                            <label class="btn btn-light m-1" for="GraphOutput_RB_1_2">Stadium</label>
-                            <input type="radio" asp-for="StratificationGraphOutput" value=3 class="btn-check test" id="GraphOutput_RB_1_3" />
-                            <label class="btn btn-light m-1" for="GraphOutput_RB_1_3">Bydliště</label>
-                            <input type="radio" asp-for="StratificationGraphOutput" value=4 class="btn-check test" id="GraphOutput_RB_1_4" />
-                            <label class="btn btn-light m-1" for="GraphOutput_RB_1_4">Období</label>
+                            <input type="radio" asp-for="StratificationGraphOutput" value=1 class="btn-check" id="GraphOutputRB1_1" checked />
+                            <label class="btn btn-radio m-1" for="GraphOutputRB1_1">Diagnóza</label>
+                            <input type="radio" asp-for="StratificationGraphOutput" value=2 class="btn-check" id="GraphOutputRB1_2" />
+                            <label class="btn btn-radio m-1" for="GraphOutputRB1_2">Stadium</label>
+                            <input type="radio" asp-for="StratificationGraphOutput" value=3 class="btn-check" id="GraphOutputRB1_3" />
+                            <label class="btn btn-radio m-1" for="GraphOutputRB1_3">Bydliště</label>
+                            <input type="radio" asp-for="StratificationGraphOutput" value=4 class="btn-check" id="GraphOutputRB1_4" />
+                            <label class="btn btn-radio m-1" for="GraphOutputRB1_4">Období</label>
                         </div>
                         <div class="col-auto">
                             <h4>Statistika</h4>
                             @{int i = 1;
                                 bool check = true;
                                 foreach (var statistics in ViewBag.SelectedStatistics) {
-                                    <input type="radio" asp-for="StatisticsIdGraphOutput" value=@statistics.Id class="btn-check" id="GraphOutput_RB_2_@i" checked=@check />
-                                    <label class="btn btn-light m-1" for="GraphOutput_RB_2_@i">@statistics.Name</label>
+                                    <input type="radio" asp-for="StatisticsIdGraphOutput" value=@statistics.Id class="btn-check" id="GraphOutputRB2_@i" checked=@check />
+                                    <label class="btn btn-radio m-1" for="GraphOutputRB2_@i">@statistics.Name</label>
                                     i++;
                                     check = false;
                                 }
@@ -111,9 +136,9 @@
                     </div>
                     <div class="row px-3 pt-2">
                         <h4>Základní filtr</h4>
-                        <div class="col-auto mb-3">
+                        <div class="col-auto mb-2 hidden" id="GraphOutputSelectDiagnosis">
                             <div class="form-floating">
-                                <select class="form-select" disabled asp-for="DiagnosisIdGraphOutput" id=GraphOutput_Select_1>
+                                <select class="form-select" asp-for="DiagnosisIdGraphOutput">
                                     @foreach (var diagnosis in ViewBag.SelectedDiagnoses) {
                                         <option value=@diagnosis.Id>@diagnosis.Name</option>
                                     }
@@ -121,9 +146,9 @@
                                 <label>Diagnóza</label>
                             </div>
                         </div>
-                        <div class="col-auto mb-3">
+                        <div class="col-auto mb-2" id="GraphOutputSelectStadium">
                             <div class="form-floating">
-                                <select class="form-select" asp-for="StadiumIdGraphOutput" id=GraphOutput_Select_2>
+                                <select class="form-select" asp-for="StadiumIdGraphOutput">
                                     @foreach (var stadium in ViewBag.SelectedStadiums) {
                                         <option value=@stadium.Id>@stadium.Name</option>
                                     }
@@ -131,9 +156,9 @@
                                 <label>Stadium</label>
                             </div>
                         </div>
-                        <div class="col-auto mb-3">
+                        <div class="col-auto mb-2" id="GraphOutputSelectRegion">
                             <div class="form-floating">
-                                <select class="form-select" asp-for="RegionIdGraphOutput" id=GraphOutput_Select_3>
+                                <select class="form-select" asp-for="RegionIdGraphOutput">
                                     @foreach (var region in ViewBag.SelectedRegions) {
                                         <option value=@region.Id>@region.Name</option>
                                     }
@@ -141,9 +166,9 @@
                                 <label>Bydliště</label>
                             </div>
                         </div>
-                        <div class="col-auto mb-3">
+                        <div class="col-auto mb-2" id="GraphOutputSelectPeriod">
                             <div class="form-floating">
-                                <select class="form-select" asp-for="PeriodIdGraphOutput" id=GraphOutput_Select_4>
+                                <select class="form-select" asp-for="PeriodIdGraphOutput">
                                     @foreach (var period in ViewBag.SelectedPeriods) {
                                         <option value=@period.Id>@period.Name</option>
                                     }
@@ -151,10 +176,64 @@
                                 <label>Období</label>
                             </div>
                         </div>
-
                     </div>
+                    <div class="row px-3 pt-2">
+                        <h4>Filtr podskupin</h4>                        
+                    </div>
+                    <div class="row px-3 pt-2" id="GraphOutputCheckDiagnosis">
+                        @{i = 0;
+                            foreach (var diagnosis in ViewBag.SelectedDiagnoses) {
+                                <div class="col-4">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" asp-for="DiagnosisIdChecksGraphOutput[i]" checked />
+                                        <label class="form-chack-label">@diagnosis.Name</label>
+                                    </div>
+                                </div>
+                                i++;
+                            }
+                        }
+                    </div>
+                    <div class="row px-3 pt-2 hidden" id="GraphOutputCheckStadium">
+                        @{i = 0;
+                            @foreach (var stadium in ViewBag.SelectedStadiums) {
+                                <div class="col-1">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" asp-for="StadiumIdChecksGraphOutput[i]" checked />
+                                        <label class="form-chack-label">@stadium.Name</label>
+                                    </div>
+                                </div>
+                                i++;
+                            }}
+                    </div>
+                    <div class="row px-3 pt-2 hidden" id="GraphOutputCheckRegion">
+                        @{i = 0;
+                            @foreach (var region in ViewBag.SelectedRegions) {
+                                <div class="col-4">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" asp-for="RegionIdChecksGraphOutput[i]" checked />
+                                        <label class="form-chack-label">@region.Name</label>
+                                    </div>
+                                </div>
+                                i++;
+                            }
+                        }
+                    </div>
+                    <div class="row px-3 pt-2 hidden" id="GraphOutputCheckPeriod">
+                        @{i = 0;
+                            @foreach (var period in ViewBag.SelectedPeriods) {
+                                <div class="col-1">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" asp-for="PeriodIdChecksGraphOutput[i]" checked />
+                                        <label class="form-chack-label">@period.Name</label>
+                                    </div>
+                                </div>
+                                i++;
+                            }
+                        }
+                    </div>
+
                     <div class="d-grid col-6 mx-auto my-3">
-                        <input type="submit" value="Zobrazit" class="" />
+                        <button class="btn btn-secondary" type="submit">Zobrazit</button>
                     </div>
                 </form>
                 <div id="GraphOutput" class="p-3 m-2 d-grid">

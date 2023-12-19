@@ -67,3 +67,4 @@ D:\Weby\Datovy_portal\DatovyPortalApp\obj\Debug\net6.0\DatovyPortalApp.pdb
 D:\Weby\Datovy_portal\DatovyPortalApp\obj\Debug\net6.0\DatovyPortalApp.genruntimeconfig.cache
 D:\Weby\Datovy_portal\DatovyPortalApp\obj\Debug\net6.0\ref\DatovyPortalApp.dll
 D:\Weby\Datovy_portal\DatovyPortalApp\obj\Debug\net6.0\DatovyPortalApp.sourcelink.json
+D:\Weby\Datovy_portal\DatovyPortalApp\bin\Debug\net6.0\libman.json

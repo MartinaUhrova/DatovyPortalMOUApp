@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "B1JBKIC9LHybz8LcF+JItIzKo3IZI4/3iPUEUh6TQILLNVaYMxk8zsCyU1KWy4KzaMLLW9tQmFcndUly2xFP7Q==",
+  "dgSpecHash": "ZIGRUWe4w6VIKNoqwJMwAbLiOL/uS1X8+bYhRD69JMwh8IFhzTDAJsOo6U5nFnSZkSSGARMupHl9t5yPZ4LgZg==",
   "success": true,
   "projectFilePath": "D:\\Weby\\Datovy_portal\\DatovyPortalApp\\DatovyPortalApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\marti\\.nuget\\packages\\buildwebcompiler2022\\1.14.10\\buildwebcompiler2022.1.14.10.nupkg.sha512",
     "C:\\Users\\marti\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\marti\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\marti\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "DatovyPortalApp/1.0.0": {
         "dependencies": {
+          "BuildWebCompiler2022": "1.14.10",
           "Microsoft.EntityFrameworkCore": "6.0.25",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.25",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.25"
@@ -16,6 +17,7 @@
           "DatovyPortalApp.dll": {}
         }
       },
+      "BuildWebCompiler2022/1.14.10": {},
       "Humanizer.Core/2.8.26": {
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {
@@ -452,6 +454,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "BuildWebCompiler2022/1.14.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K6DuYLk2vB1H35DdAyqaqYkAOSTRcB6rxaPIyL1T0k0cOx70Jm4QKav7JzJx1+6KoltvXlM4oCtmgRbm2F4jhw==",
+      "path": "buildwebcompiler2022/1.14.10",
+      "hashPath": "buildwebcompiler2022.1.14.10.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

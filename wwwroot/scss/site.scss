@@ -1,0 +1,96 @@
+﻿//Main colors
+$primary: #284B63;
+$secondary: #3C6E71;
+$dark: #353535;
+
+//Navbar
+$navbar-dark-toggler-border-color: white;
+$navbar-dark-icon-color: white;
+$navbar-brand-font-size: 1.8rem;
+
+//Accordion
+$accordion-button-color:white;
+$accordion-button-active-color:lighten($primary,50);
+$accordion-icon-color:white;
+$accordion-icon-active-color: lighten($primary,50);
+$accordion-button-focus-box-shadow:none;
+
+
+@import "../lib/bootstrap/scss/bootstrap.scss";
+
+@font-face {
+    font-family: Matter;
+    src: url(../matter-font/Matter-Regular.otf);
+}
+
+@font-face {
+    font-family: Matter;
+    src: url(../matter-font/Matter-Bold.otf);
+    font-weight: bold;
+}
+
+body {
+    font-family: "Matter", sans-serif;
+    background-color: $gray-300;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    padding: 30px;
+    min-width: 250px;
+    max-width: 350px;    
+}
+
+#sidebar-content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+#pageSelect {
+    background-color: lighten($primary,50);
+}
+
+#pageSelect .nav-link:hover {
+    background-color: lighten($primary,30);
+    border: 1px solid lighten($primary,30);
+}
+
+#pageSelect .active {
+    font-weight: bold;
+}
+
+.card {
+    max-width: 40rem;
+}
+
+ul li {
+    color:white;
+}
+
+form {
+    background: lighten($secondary, 45);
+}
+
+.btn-radio {    
+    --bs-btn-bg: white;    
+    --bs-btn-hover-bg: #{shade-color($secondary, 50%)};    
+    --bs-btn-focus-shadow-rgb: $dark;
+    --bs-btn-active-color: white;
+    --bs-btn-active-bg: #{$primary};
+    --bs-btn-active-border-color: #{$primary};
+}
+
+.form-select {
+    min-width:200px;
+}
+
+.hidden {
+    display:none;    
+}
+

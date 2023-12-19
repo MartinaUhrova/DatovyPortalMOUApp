@@ -1,7 +1,5 @@
 ﻿@using DatovyPortalApp.ViewModels
 @model GraphOutputViewModel;
 
-<div id="Graph" class="mx-auto" data-xdata="@Html.Raw(Json.Serialize(Model.AxisX))" data-ydata="@Html.Raw(Json.Serialize(Model.AxisY))">
+<div id="Graph" class="mx-auto" data-xdata="@Model.AxisX" data-ydata="@Model.AxisY" data-ci="@Html.Raw(Model.ConfidenceInterval)">
 </div>
-
-

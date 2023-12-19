@@ -2,9 +2,10 @@
 using DatovyPortalApp.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata.Ecma335;
+using System.Text.Json;
+using System.Xml;
 
-namespace DatovyPortalApp.Services
-{
+namespace DatovyPortalApp.Services {
     public class DataService {
 
         private readonly ApplicationDbContext dbContext;
@@ -43,7 +44,7 @@ namespace DatovyPortalApp.Services
         }
 
         public async Task<IndicatorCodeList?> GetSelectedIndicatorAsync(int indicator) {
-            return (await GetIndicatorCodeListAsync())?.                
+            return (await GetIndicatorCodeListAsync())?.
                 FirstOrDefault(x => x.Id == indicator);
         }
 
@@ -92,7 +93,7 @@ namespace DatovyPortalApp.Services
                 Distinct().
                 OrderBy(x => x).
                 ToListAsync();
-    }
+        }
 
         public async Task<ValuesOutputViewModel> GetValuesOutputAsync(DataToOutputViewModel viewModel, int indicator) {
             ValuesOutputViewModel valuesOutputVM = new();
@@ -127,8 +128,34 @@ namespace DatovyPortalApp.Services
         }
 
         public async Task<GraphOutputViewModel> GetGraphOutputAsync(DataToOutputViewModel viewModel, int indicator) {
+            if (dbContext.Statistics is null) return new GraphOutputViewModel();
             GraphOutputViewModel graphOutputVM = new();
-            
+            List<string> axisX = new();
+            List<double> axisY = new();
+
+            if (viewModel.StratificationGraphOutput == 4) {
+                List<PeriodCodeList> filteredPeriods = new();
+                filteredPeriods = GetSelectedPeriodsAsync(indicator).Result.
+                    Where((value, index) => viewModel.PeriodIdChecksGraphOutput[index]).
+                    ToList();
+                axisX = filteredPeriods.Select(x => x.Name).ToList();
+                axisY = await dbContext.Statistics.
+                    Where(x => x.IndicatorId == indicator).
+                    Where(x => x.StadiumId == viewModel.StadiumIdGraphOutput).
+                    Where(x => x.RegionId == viewModel.RegionIdGraphOutput).
+                    Where(x => x.DiagnosisId == viewModel.DiagnosisIdGraphOutput).
+                    Where(x => x.StatisticsId == viewModel.StatisticsIdGraphOutput).
+                    Where(x => filteredPeriods.Select(per => per.Id).Contains(x.PeriodId)).
+                    OrderBy(x => x.PeriodId).
+                    Select(x => x.Value).
+                    ToListAsync();
+                graphOutputVM.AxisXLabel = "Období";
+            }
+
+            graphOutputVM.ConfidenceInterval = viewModel.StatisticsIdGraphOutput <= 3;            
+            graphOutputVM.AxisX = JsonSerializer.Serialize(axisX);            
+            graphOutputVM.AxisY = JsonSerializer.Serialize(axisY);
+
             return graphOutputVM;
         }
     }

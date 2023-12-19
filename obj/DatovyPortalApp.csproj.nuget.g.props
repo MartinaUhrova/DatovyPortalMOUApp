@@ -18,5 +18,6 @@
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\marti\.nuget\packages\microsoft.entityframeworkcore.tools\6.0.25</PkgMicrosoft_EntityFrameworkCore_Tools>
+    <PkgBuildWebCompiler2022 Condition=" '$(PkgBuildWebCompiler2022)' == '' ">C:\Users\marti\.nuget\packages\buildwebcompiler2022\1.14.10</PkgBuildWebCompiler2022>
   </PropertyGroup>
 </Project>
