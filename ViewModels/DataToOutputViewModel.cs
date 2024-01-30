@@ -26,7 +26,5 @@ namespace DatovyPortalApp.ViewModels {
         public List<bool> StadiumIdChecksGraphOutput { get; set; } = new List<bool>();
         public List<bool> RegionIdChecksGraphOutput { get; set; } = new List<bool>();
         public List<bool> PeriodIdChecksGraphOutput { get; set; } = new List<bool>();
-
-
     }
 }

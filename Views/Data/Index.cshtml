@@ -178,69 +178,98 @@
                         </div>
                     </div>
                     <div class="row px-3 pt-2">
-                        <h4>Filtr podskupin</h4>                        
+                        <h4>Filtr podskupin</h4>
                     </div>
                     <div class="row px-3 pt-2" id="GraphOutputCheckDiagnosis">
+                        <div class="col-12 mb-2">
+                            <div class="form-check">
+                                <input id="buttonSelectAllDiagnoses" class="form-check-input" type="checkbox" checked />
+                                <label class="form-chack-label"><strong>Vybrat vše</strong></label>
+                            </div>
+                        </div>
                         @{i = 0;
                             foreach (var diagnosis in ViewBag.SelectedDiagnoses) {
                                 <div class="col-4">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" asp-for="DiagnosisIdChecksGraphOutput[i]" checked />
+                                        <input class="form-check-input" type="checkbox" asp-for="DiagnosisIdChecksGraphOutput[i]" checked id="checkboxDiagnosis_@i" />
                                         <label class="form-chack-label">@diagnosis.Name</label>
                                     </div>
                                 </div>
                                 i++;
                             }
+                            <div id="checkboxCountOfDiagnoses" data-count="@i"></div>
                         }
                     </div>
                     <div class="row px-3 pt-2 hidden" id="GraphOutputCheckStadium">
+                        <div class="col-12 mb-2">
+                            <div class="form-check">
+                                <input id="buttonSelectAllStadiums" class="form-check-input" type="checkbox" checked />
+                                <label class="form-chack-label"><strong>Vybrat vše</strong></label>
+                            </div>
+                        </div>
                         @{i = 0;
                             @foreach (var stadium in ViewBag.SelectedStadiums) {
-                                <div class="col-1">
+                                <div class="col-2">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" asp-for="StadiumIdChecksGraphOutput[i]" checked />
+                                        <input class="form-check-input" type="checkbox" asp-for="StadiumIdChecksGraphOutput[i]" checked id="checkboxStadium_@i"/>
                                         <label class="form-chack-label">@stadium.Name</label>
                                     </div>
                                 </div>
                                 i++;
-                            }}
-                    </div>
+                            }
+                            <div id="checkboxCountOfStadiums" data-count="@i"></div>
+                            }
+                        </div>
                     <div class="row px-3 pt-2 hidden" id="GraphOutputCheckRegion">
+                        <div class="col-12 mb-2">
+                            <div class="form-check">
+                                <input id="buttonSelectAllRegions" class="form-check-input" type="checkbox" checked />
+                                <label class="form-chack-label"><strong>Vybrat vše</strong></label>
+                            </div>
+                        </div>
                         @{i = 0;
                             @foreach (var region in ViewBag.SelectedRegions) {
                                 <div class="col-4">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" asp-for="RegionIdChecksGraphOutput[i]" checked />
+                                        <input class="form-check-input" type="checkbox" asp-for="RegionIdChecksGraphOutput[i]" checked id="checkboxRegion_@i" />
                                         <label class="form-chack-label">@region.Name</label>
                                     </div>
                                 </div>
                                 i++;
                             }
+                            <div id="checkboxCountOfRegions" data-count="@i"></div>
                         }
                     </div>
                     <div class="row px-3 pt-2 hidden" id="GraphOutputCheckPeriod">
+                        <div class="col-12 mb-2">
+                            <div class="form-check">
+                                <input id="buttonSelectAllPeriods" class="form-check-input" type="checkbox" checked />
+                                <label class="form-chack-label"><strong>Vybrat vše</strong></label>
+                            </div>
+                        </div>
                         @{i = 0;
                             @foreach (var period in ViewBag.SelectedPeriods) {
-                                <div class="col-1">
+                                <div class="col-2">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" asp-for="PeriodIdChecksGraphOutput[i]" checked />
+                                        <input class="form-check-input" type="checkbox" asp-for="PeriodIdChecksGraphOutput[i]" checked id="checkboxPeriod_@i"/>
                                         <label class="form-chack-label">@period.Name</label>
                                     </div>
                                 </div>
                                 i++;
                             }
+                            <div id="checkboxCountOfPeriods" data-count="@i"></div>
                         }
                     </div>
 
-                    <div class="d-grid col-6 mx-auto my-3">
-                        <button class="btn btn-secondary" type="submit">Zobrazit</button>
+                        <div class="d-grid col-6 mx-auto my-3">
+                            <button class="btn btn-secondary" type="submit">Zobrazit</button>
+                        </div>
+                    </form>
+                    <div id="GraphOutput" class="p-3 m-2 d-grid">
                     </div>
-                </form>
-                <div id="GraphOutput" class="p-3 m-2 d-grid">
+
                 </div>
-
             </div>
-        </div>
 
+        </div>
     </div>
-</div>

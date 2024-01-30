@@ -152,7 +152,8 @@ namespace DatovyPortalApp.Services {
                 graphOutputVM.AxisXLabel = "Období";
             }
 
-            graphOutputVM.ConfidenceInterval = viewModel.StatisticsIdGraphOutput <= 3;            
+            graphOutputVM.ConfidenceInterval = viewModel.StatisticsIdGraphOutput <= 3;
+            graphOutputVM.Title = GetSelectedIndicatorAsync(indicator).Result.Name;
             graphOutputVM.AxisX = JsonSerializer.Serialize(axisX);            
             graphOutputVM.AxisY = JsonSerializer.Serialize(axisY);
 

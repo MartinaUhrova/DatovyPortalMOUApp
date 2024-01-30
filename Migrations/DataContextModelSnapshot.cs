@@ -169,7 +169,7 @@ namespace DatovyPortalApp.Migrations
                     b.Property<double?>("UpperLimit")
                         .HasColumnType("float");
 
-                    b.Property<double?>("Value")
+                    b.Property<double>("Value")
                         .HasColumnType("float");
 
                     b.HasKey("Id");

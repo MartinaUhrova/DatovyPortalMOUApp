@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DatovyPortalApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c378438e654f15f349bab30e5759ee3031bd12d6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("DatovyPortalApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DatovyPortalApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
